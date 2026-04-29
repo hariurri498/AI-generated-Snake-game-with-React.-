@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-neon-cyan: #00f3ff;
+  --color-neon-magenta: #ff00ff;
+  --color-neon-lime: #39ff14;
+  --color-neon-yellow: #fff01f;
+  --color-dark-bg: #0a0a0c;
+  --color-card-bg: #151619;
+}
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-white font-sans overflow-hidden;
+  }
+
+  /* Custom Scrollbar for Neon feel */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-bg;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full hover:bg-neon-cyan/50;
+  }
+}
+
+@layer utilities {
+  .neon-border-cyan {
+    box-shadow: 0 0 5px rgba(0, 243, 255, 0.2), inset 0 0 5px rgba(0, 243, 255, 0.2);
+    border: 1px solid rgba(0, 243, 255, 0.5);
+  }
+  .neon-border-magenta {
+    box-shadow: 0 0 5px rgba(255, 0, 255, 0.2), inset 0 0 5px rgba(255, 0, 255, 0.2);
+    border: 1px solid rgba(255, 0, 255, 0.5);
+  }
+  .neon-glow-cyan {
+    filter: drop-shadow(0 0 8px rgba(0, 243, 255, 0.8));
+  }
+  .neon-glow-magenta {
+    filter: drop-shadow(0 0 8px rgba(255, 0, 255, 0.8));
+  }
+  .glass-surface {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10;
+  }
+}
+
+@keyframes pulse-neon {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-pulse-neon {
+  animation: pulse-neon 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
